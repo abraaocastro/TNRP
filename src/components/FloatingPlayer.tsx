@@ -277,7 +277,6 @@ export function FloatingPlayer({ player, onClose, onUpdate }: FloatingPlayerProp
   return (
     <div
       ref={wrapRef}
-      className="tnrp-animate-in"
       style={{
         position: "absolute",
         top: 0,
@@ -288,8 +287,16 @@ export function FloatingPlayer({ player, onClose, onUpdate }: FloatingPlayerProp
         zIndex: 2147483647,
       }}
     >
+      {/*
+        IMPORTANTE: a animação `tnrp-animate-in` fica no card INTERNO,
+        não no wrap. Por CSS spec, animações sobrescrevem inline styles
+        para as propriedades animadas — se a classe estivesse no wrap,
+        o `transform: scale(1) translateY(0)` do keyframe `to` (com
+        fill-mode `both`) sobrescreveria o transform de posicionamento
+        e o player ficaria preso na origem (canto superior esquerdo).
+      */}
       <div
-        className={`flex h-full flex-col overflow-hidden rounded-xl border-2 bg-slate-900 shadow-2xl transition-opacity ${
+        className={`tnrp-animate-in flex h-full flex-col overflow-hidden rounded-xl border-2 bg-slate-900 shadow-2xl transition-opacity ${
           isDragging ? "opacity-80 border-sky-500" : "border-slate-600"
         }`}
       >
