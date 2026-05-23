@@ -1,0 +1,41 @@
+{
+  "name": "tnrp",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "The New Radinho de Pilha — Chrome extension for Watch Parties",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "zip": "vite build && cd dist && tar -acf ../tnrp-v0.1.0.zip . && cd ..",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.4.0",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.4.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.8.3",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.4",
+    "vite": "^8.0.14",
+    "vitest": "^4.1.7"
+  }
+}

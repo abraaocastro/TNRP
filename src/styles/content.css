@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/*
+ * Reset dentro do Shadow DOM para garantir que estilos
+ * herdados do site host não vazem para os componentes TNRP.
+ */
+:host {
+  all: initial;
+  display: block;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+#tnrp-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2147483647;
+  pointer-events: none;
+  overflow: visible;
+}
+
+#tnrp-app * {
+  pointer-events: auto;
+}
+
+/* T4.2 — Slider de volume estilizado */
+.tnrp-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  border: none;
+}
+
+.tnrp-volume-slider::-webkit-slider-thumb:hover {
+  background: #7dd3fc;
+  transform: scale(1.2);
+}
+
+.tnrp-volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  border: none;
+}
+
+.tnrp-volume-slider::-moz-range-track {
+  height: 5px;
+  border-radius: 3px;
+  background: #475569;
+}
+
+/* T8.1 — Animações de entrada/saída */
+@keyframes tnrp-fade-in {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+@keyframes tnrp-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tnrp-fade-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.95); }
+}
+
+.tnrp-animate-in {
+  animation: tnrp-fade-in 0.25s ease-out both;
+}
+
+.tnrp-animate-slide-up {
+  animation: tnrp-slide-up 0.2s ease-out both;
+}
+
+.tnrp-animate-out {
+  animation: tnrp-fade-out 0.15s ease-in both;
+}
+
+/* T8.2 — Onboarding tooltip */
+@keyframes tnrp-tooltip-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+.tnrp-tooltip-bounce {
+  animation: tnrp-tooltip-bounce 2s ease-in-out infinite;
+}
